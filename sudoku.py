@@ -106,7 +106,7 @@ def solve():
 						solvable = solvable + 1
 				if solvable == 1:
 					print '\nCell %sx%s is solvable!' % (row,col) # FINALLY actually solve here lolololol
-					for num in range (0,9):
+					for num in range(0,9):
 						if number[num] == False:
 							table[row][col] = num + 1
 				else:
