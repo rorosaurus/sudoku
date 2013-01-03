@@ -17,6 +17,21 @@ table = [row1,row2,row3,row4,row5,row6,row7,row8,row9];
 #def validate(i):
 	#blah
 
+def showprettytable():
+	print '\nCurrent Table (- denotes empty cell)\n'
+	#print '\t-\t-\t-\t-\t-\t-\t-\t-\t-\t-\t-\t-\t-\n'
+	for i in range(0,9):
+		if i%3 == 0:
+			print '\n'
+		for j in range(0,9):
+			if j%3 == 0:
+				print '\t',
+			if table[i][j] == 0:
+				print '-',
+			else:
+				print str(table[i][j]),
+		print '\n'
+
 # Show Table (lol does this even need to be a function?)
 def showtable():
 	print '\nCurrent Table (0 denotes empty cell)\n'
@@ -30,7 +45,7 @@ def promptandvalidate(prompt,low,high):
 	result = raw_input(prompt)
 	if result.isdigit():
 		num = int(result)
-		if(num >= low and num <= high):
+		if low <= num <= high:
 			return num
 		else:
 			print 'Invalid input.  Try again.'
@@ -47,7 +62,7 @@ def loadtable():
 			puzzle = f.readline()
 	# puzzle string now stores our desired table
 	for i in range(0,81):
-		table[i/9][i%9] = puzzle[i]
+		table[i/9][i%9] = int(puzzle[i])
 	# math sure is awesome
 	print 'Puzzle number ' + str(line) + ' now loaded.'
 
